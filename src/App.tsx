@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.scss'
+import { HomeView } from './views/HomeView';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { CssBaseline, Switch } from '@material-ui/core'
 
-function App() {
+export const App = () => {
+
+  const [modeDark, setModeDark] = useState(false);
+
+  const theme = createTheme({
+    palette: {
+      type: modeDark? "dark" : "light",
+      primary:{
+        main: '#FFCA28'
+      }
+    }
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
 
-export default App;
+      <Switch 
+        onClick={() => setModeDark(!modeDark) }
+      />
+
+      <div className="container">
+        <HomeView />
+      </div>
+    </ThemeProvider>
+  )
+}
