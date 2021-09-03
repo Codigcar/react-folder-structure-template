@@ -4,6 +4,10 @@ import { HomeView } from './views/HomeView';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline, Switch } from '@material-ui/core'
 
+import { BrowserRouter } from 'react-router-dom';
+import './tailwind.css';
+import { AppRouter } from './routes/AppRouter';
+
 export const App = () => {
 
   const [modeDark, setModeDark] = useState(false);
@@ -21,13 +25,12 @@ export const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <Switch 
+      {/* <Switch 
         onClick={() => setModeDark(!modeDark) }
-      />
+      /> */}
 
-      <div className="container">
-        <HomeView />
-      </div>
+      <AppRouter />
+      
     </ThemeProvider>
   )
 }
