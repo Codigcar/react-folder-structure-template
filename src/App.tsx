@@ -25,9 +25,9 @@ export const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      {/* <Switch 
+      <Switch 
         onClick={() => setModeDark(!modeDark) }
-      /> */}
+      />
 
       <AppRouter />
       
